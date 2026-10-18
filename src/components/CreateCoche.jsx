@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 
 export default class CreateCoche extends Component {
     service = new ServiceCoches();
+
     cajaNumero = React.createRef();
     cajaMarca = React.createRef();
     cajaModelo = React.createRef();
@@ -19,10 +20,11 @@ export default class CreateCoche extends Component {
         event.preventDefault();
         // CREO EL OBJETO COCHE
         let coche = {
-            numero: parseInt(this.cajaNumero.current.value),
+            idCoche: parseInt(this.cajaNumero.current.value),
             marca: this.cajaMarca.current.value,
             modelo: this.cajaModelo.current.value,
-            conductor: this.cajaConductor.current.value
+            conductor: this.cajaConductor.current.value,
+            imagen: this.cajaImagen.current.value
         }
 
         // CAPTURA DE ERRORES
@@ -39,8 +41,40 @@ export default class CreateCoche extends Component {
     }
 
   render() {
-    return (
-      <div>CreateCoche</div>
+    if (this.state.status == true) {
+        return (<Navigate to="/"/>)
+    }else{
+        return (
+      <div>
+        <h1>Crear el coche</h1>
+        {
+            this.state.mensaje &&
+            (<p style={{color:"fuchsia", fontWeight: "bold"}}>
+                {this.state.mensaje}
+            </p>)
+        }
+        <form onSubmit={this.insertCoche}>
+            <label> Id del coche: </label>
+            <input type="number" className='form-control'
+            ref={this.cajaNumero}/>
+            <label>Marca: </label>
+            <input type="text" className='form-control'
+            ref={this.cajaMarca}/>
+            <label>Modelo: </label>
+            <input type="text" className='form-control'
+            ref={this.cajaModelo}/>
+            <label>Conductor: </label>
+            <input type="text" className='form-control'
+            ref={this.cajaConductor}/>
+            <label>Imagen: </label>
+            <input type="file" className='form-control'
+            ref={this.cajaImagen}/>
+            <button type="submit">
+                Insertar
+            </button>
+        </form>
+      </div>
     )
   }
+}
 }

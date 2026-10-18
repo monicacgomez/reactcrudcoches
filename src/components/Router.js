@@ -6,23 +6,28 @@ import CreateCoche from './CreateCoche'
 import UpdateCoche from './UpdateCoche'
 import DetallesCoche from './DetallesCoche'
 
-export default class Router extends Component {
-  render() {
-    function UpdateCoche () {
-        let {id, marca, modelo, conductor, imagen} = useParams();
-        return <UpdateCoche id={id} marca={marca} modelo={modelo} conductor={conductor} imagen={imagen}/>
+function UpdateCocheRoute () {
+        let { id } = useParams();
+        return <UpdateCoche id={id} />;
     }
 
+function DetallesCocheRoute() {
+    let { id } = useParams();
+    return <DetallesCoche id={id} />;
+}
+
+export default class Router extends Component {
+  render() {
     return (
-      <BrowserRouter>
-      <MenuComponent/>
-        <Routes>
-            <Route path="/" element={<HomeComponent/>}/>
-            <Route path="/create" element={<CreateCoche/>}/>
-            <Route path="/update/:id/:marca/:modelo/:conductor/:imagen" 
-            element={<UpdateCocheElement/>}/>
-        </Routes>
-      </BrowserRouter>
-    )
+    <BrowserRouter>
+    <MenuComponent />
+    <Routes>
+      <Route path="/" element={<HomeComponent />} />
+      <Route path="/create" element={<CreateCoche />} />
+      <Route path="/update/:id" element={<UpdateCocheRoute />} />
+      <Route path="/details/:id" element={<DetallesCocheRoute />} />
+    </Routes>
+    </BrowserRouter>
+    );
   }
 }
