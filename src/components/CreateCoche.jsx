@@ -45,36 +45,82 @@ export default class CreateCoche extends Component {
         return (<Navigate to="/"/>)
     }else{
         return (
-      <div>
-        <h1>Crear el coche</h1>
-        {
-            this.state.mensaje &&
-            (<p style={{color:"fuchsia", fontWeight: "bold"}}>
-                {this.state.mensaje}
-            </p>)
-        }
-        <form onSubmit={this.insertCoche}>
-            <label> Id del coche: </label>
-            <input type="number" className='form-control'
-            ref={this.cajaNumero}/>
-            <label>Marca: </label>
-            <input type="text" className='form-control'
-            ref={this.cajaMarca}/>
-            <label>Modelo: </label>
-            <input type="text" className='form-control'
-            ref={this.cajaModelo}/>
-            <label>Conductor: </label>
-            <input type="text" className='form-control'
-            ref={this.cajaConductor}/>
-            <label>Imagen: </label>
-            <input type="file" className='form-control'
-            ref={this.cajaImagen}/>
-            <button type="submit">
-                Insertar
-            </button>
-        </form>
-      </div>
-    )
-  }
+        <div className="mx-auto max-w-2xl px-5 py-10">
+            <div className="overflow-hidden rounded-2xl bg-white shadow-lg">
+                <div className="bg-[#304860] px-6 py-5">
+                    <p className="text-sm font-semibold uppercase tracking-widest text-[#ddeeff]">
+                        AUTO DRIVE · Gestión de vehículos
+                    </p>
+                    <h1 className="mt-2 text-3xl font-extrabold text-white">
+                    Añadir coche
+                    </h1>
+                    <p className="mt-2 text-sm text-[#ddeeff]">
+                    Introduce los datos del nuevo vehículo.
+                    </p>
+                </div>
+                
+                <form onSubmit={this.insertCoche} className="space-y-5 p-6 sm:p-8">
+                {this.state.mensaje && (
+                    <p className="rounded-lg bg-red-50 p-4 text-red-700">
+                    Error: {this.state.mensaje}
+                    </p>
+                )}
+                
+                <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#304860]">
+                        ID del coche
+                    </label>
+                    <input type="number" ref={this.cajaNumero}
+                    required className="w-full rounded-lg border border-[#7da7d9] bg-white px-4 py-3 text-[#304860] outline-none transition focus:ring-2 focus:ring-[#7da7d9]"/>
+                </div>
+                
+                <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#304860]">
+                    Marca
+                    </label>
+                    <input type="text" ref={this.cajaMarca}
+                    required className="w-full rounded-lg border border-[#7da7d9] bg-white px-4 py-3 text-[#304860] outline-none transition focus:ring-2 focus:ring-[#7da7d9]"
+                    />
+                </div>
+                
+                <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#304860]">
+                    Modelo
+                    </label>
+                    <input type="text" ref={this.cajaModelo}
+                    required className="w-full rounded-lg border border-[#7da7d9] bg-white px-4 py-3 text-[#304860] outline-none transition focus:ring-2 focus:ring-[#7da7d9]"
+                    />
+                </div>
+                
+                <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#304860]">
+                    Conductor
+                    </label>
+                    <input type="text" ref={this.cajaConductor} 
+                    required className="w-full rounded-lg border border-[#7da7d9] bg-white px-4 py-3 text-[#304860] outline-none transition focus:ring-2 focus:ring-[#7da7d9]"
+                    />
+                </div>
+
+                <div>
+                    <label className="mb-2 block text-sm font-semibold text-[#304860]">
+                    Imagen (URL o ruta)
+                    </label>
+                    <input type="text" ref={this.cajaImagen} placeholder="https://..."
+                    className="w-full rounded-lg border border-[#7da7d9] bg-white px-4 py-3 text-[#304860] outline-none transition focus:ring-2 focus:ring-[#7da7d9]"
+                    />
+                    <p className="mt-1 text-xs text-slate-500">
+                    Introduce la dirección de la imagen del coche.
+                    </p>
+                </div>
+                
+                <button type="submit"
+                className="w-full rounded-xl bg-[#304860] px-5 py-3 font-bold text-white shadow-md transition hover:bg-[#7da7d9] hover:text-[#304860]">
+                    Añadir coche
+                </button>
+                </form>
+            </div>
+        </div>
+    );
+}
 }
 }
