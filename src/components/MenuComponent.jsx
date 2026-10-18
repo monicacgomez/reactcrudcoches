@@ -5,28 +5,34 @@ import car from '../assets/images/car.png';
 export default class MenuComponent extends Component {
     render() {
         return (
-            <nav
-                className="navbar navbar-expand-lg"
-                style={{ backgroundColor: "#e3f2fd" }}
-            >
-                <div className="container-fluid">
-                    <NavLink className="navbar-brand" to="/">
+            <nav style={{ backgroundColor: "#304860" }} className="text-white shadow-lg">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+                     <NavLink to="/" className="flex items-center gap-3">
                         <img
                             src={car}
-                            alt="Inicio"
-                            style={{ width: "60px" }}
+                            alt="Concesionario"
+                            className="h-12 w-12 rounded-full bg-white object-contain p-1"
                         />
-                    </NavLink>
+                        
+                        <div>
+                            <span className="block text-lg font-extrabold tracking-wide">
+                                AUTO<span className="text-amber-400">DRIVE</span>
+                            </span>
+                            <span className="text-xs uppercase tracking-widest text-blue-100">
+                                Concesionario 
+                            </span>
+                        </div>
+                     </NavLink>
 
-                    <div className="navbar-nav">
-                        <NavLink className="nav-link" to="/">
-                            Coches
+                     <div className="flex items-center gap-3">
+                        <NavLink to="/" className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20">
+                        Coches
                         </NavLink>
 
-                        <NavLink className="nav-link" to="/create">
-                            Crear coche
+                        <NavLink to="/create" className="rounded-lg bg-[#7da7d9] px-4 py-2 text-sm font-bold text-[#304860] transition hover:bg-[#ddeeff]">
+                        Añadir coche
                         </NavLink>
-                    </div>
+                     </div>
                 </div>
             </nav>
         );
